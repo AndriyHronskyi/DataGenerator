@@ -8,14 +8,10 @@ namespace DataGenerator
 {
     public class LoginGenerate
     {
-        private Random random = new Random(); 
-        private string username { get; set; }
-        private string Login 
-        {
-            get { return Login; }
-            set { Login = username + random.Next(111, 999).ToString(); } 
-        }
-        private string Email { get; set; }
+        private Random random = new Random();
+        private string username;
+        public string login { get { return username + random.Next(111, 999).ToString(); }}
+        public string email { get { return login + EmailDomains[random.Next(0, 5)]; ; } }
 
         private string[] EmailDomains = {"@mail.ua",
                                          "@gmail.com",
@@ -26,20 +22,21 @@ namespace DataGenerator
 
         public LoginGenerate() { }
 
-        public string GetUsername(char[] name)
+        public void SetUsername(char[] name)
         {
-            return name.ToString();
-        }
-
-        public string GetEmail()
-        {
-            Email = Login + EmailDomains[random.Next(0, 5)];
-            return Email;
+            //.Trim()
+            username = name.ToString();   /// Переробити
         }
 
         public string GetPassword()
         {
             return random.Next(10000, 99999).ToString();
+        }
+
+        public string GetDate()
+        {
+            RandomDate RandDate = new RandomDate();
+            return RandDate.GetRandomDate();
         }
     }
 }

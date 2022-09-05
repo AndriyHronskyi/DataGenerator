@@ -18,87 +18,79 @@ namespace DataGenerator
             {
                 using (StreamReader sr = new StreamReader(Path1, System.Text.Encoding.UTF8))
                 {
-                    string input = null;
-                    var koma = 1;
-
-                    while ((input = sr.ReadLine()) != null)
+                    using (StreamReader _sr3 = new StreamReader(Path2, System.Text.Encoding.UTF8))
                     {
-                        char[] outFIO = new char[input.Length];
+                        string input = null;
+                        string input1 = null;
+                        var koma = 1;
 
-                        //open VALUE
-                        if (koma == 1)
+                        while ((input = sr.ReadLine()) != null && (input1 = _sr3.ReadLine()) != null)
                         {
-                            Console.Write("('");
-                            koma++;
-                        }
-                        else
-                        {
-                            Console.Write(",('");
-                        }
-                        
-                        using (StringReader sr2 = new StringReader(input))
-                        {
-                            
-                            for (int i = 0; i < outFIO.Length; i++)
-                            { 
-                                sr2.Read(outFIO, i, 1);
+                            char[] outFIO = new char[input.Length];
 
-                                if (Char.IsSeparator(outFIO[i]))
-                                {
-                                    Console.Write("', '");
-                                }
-                                else
-                                {
-                                    Console.Write(outFIO[i]);
-                                }
-                            } 
-                        }
-
-
-                        //______Emails File
-                        char[] outEmails = new char[input.Length /2];
-
-                        using (StringReader sr4 = new StringReader(Path2))
-                        {
-                            for (int i = 0; i < outEmails.Length; i++)
+                            //open VALUE
+                            if (koma == 1)
                             {
-                                sr4.Read(outEmails, i, 1);
+                                Console.Write("('");
+                                koma++;
+                            }
+                            else
+                            {
+                                Console.Write(",('");
+                            }
 
-                                if (Char.IsSeparator(outEmails[i]))
+                            using (StringReader sr2 = new StringReader(input))
+                            {
+
+                                for (int i = 0; i < outFIO.Length; i++)
                                 {
-                                    //outEmails.Concat(());
-                                    //outEmails[]
+                                    sr2.Read(outFIO, i, 1);
 
-                                    LoginGenerate logIn = new LoginGenerate(outEmails);
-
-
-                                    //Call LoginGenerate
-                                    ;
-                                    Console.Write("', '");
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.Write(outEmails[i]);
+                                    if (Char.IsSeparator(outFIO[i]))
+                                    {
+                                        Console.Write("', '");
+                                    }
+                                    else
+                                    {
+                                        Console.Write(outFIO[i]);
+                                    }
                                 }
                             }
 
 
-                            
-                             //Password 
-                           /* Random rnd = new Random();
-                            string Password = //rnd.Next(10000, 99999).ToString();*/
+                            //______Emails File
+                            char[] outEmails = new char[input.Length / 2];
+                            LoginGenerate logIn = new LoginGenerate();
 
-                            //RegistrationDate
-                            RandomDate randDate = new RandomDate();
-                            string Date = randDate.GetRandomDate();
+                            using (StringReader sr4 = new StringReader(input1))
+                            {
+                                for (int i = 0; i < outEmails.Length; i++)
+                                {
+                                    sr4.Read(outEmails, i, 1);
+
+                                    if (Char.IsSeparator(outEmails[i]))
+                                    {
+                                        logIn.SetUsername(outEmails);
+
+                                        Console.Write("', '");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.Write(outEmails[i]);
+                                    }
+                                }
+
+                                
+
+                                Console.Write($"', '{logIn.email}', '{logIn.login}', '{logIn.GetPassword()}','{logIn.GetDate()}'");
+                            }
+                            Console.Write(")");   //close VALUE
+                            Console.WriteLine();
                         }
-                        Console.Write("')");   //close VALUE
-                        Console.WriteLine();
                     }
+                    
                 }
-                
-                Console.ReadLine();
             }
             catch (FileNotFoundException e1)
             {
@@ -108,6 +100,7 @@ namespace DataGenerator
             {
                 Console.WriteLine(e2.Message);
             }
+            Console.ReadLine();
         }
     }
 }
