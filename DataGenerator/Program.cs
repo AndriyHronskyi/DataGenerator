@@ -60,7 +60,7 @@ namespace DataGenerator
 
                             //______Emails File
                             char[] outEmails = new char[input.Length / 2];
-                            LoginGenerate logIn = new LoginGenerate();
+                            UserGenerate User = new UserGenerate();
 
                             using (StringReader sr4 = new StringReader(input1))
                             {
@@ -70,7 +70,7 @@ namespace DataGenerator
 
                                     if (Char.IsSeparator(outEmails[i]))
                                     {
-                                        logIn.SetUsername(outEmails);
+                                        User.SetUsername(outEmails);
 
                                         Console.Write("', '");
                                         break;
@@ -81,9 +81,7 @@ namespace DataGenerator
                                     }
                                 }
 
-                                
-
-                                Console.Write($"', '{logIn.email}', '{logIn.login}', '{logIn.GetPassword()}','{logIn.GetDate()}'");
+                                Console.Write($"', '{User.email}', '{User.login}', '{User.GetPassword()}','{User.GetDate()}'");
                             }
                             Console.Write(")");   //close VALUE
                             Console.WriteLine();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataGenerator
 {
-    public class LoginGenerate
+    public class UserGenerate
     {
         private Random random = new Random();
         private string username;
@@ -20,7 +20,7 @@ namespace DataGenerator
                                          "@hotmail.com",
                                          "@list.ua"};
 
-        public LoginGenerate() { }
+        public UserGenerate() { }
 
         public void SetUsername(char[] name)
         {
