@@ -10,6 +10,8 @@ namespace DataGenerator
     public class RandomDate
     {
         private Random rnd1 = new Random();
+        private Random rnd2 = new Random();
+        private Random rnd3 = new Random();
 
         private int Year { get; set; }
         private int Month { get; set; }
@@ -20,14 +22,14 @@ namespace DataGenerator
         public RandomDate() 
         {
             Year = rnd1.Next(1999, 2022);
-            Month = rnd1.Next(01, 12);
+            Month = rnd2.Next(01, 12);
             if (Month == 02)
             {
-                Day = rnd1.Next(01, 28);
+                Day = rnd3.Next(01, 28);
             }
             else
             {
-                Day = rnd1.Next(01, 30);
+                Day = rnd3.Next(01, 30);
             }
         }
 
