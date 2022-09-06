@@ -22,10 +22,16 @@ namespace DataGenerator
 
         public UserGenerate() { }
 
-        public void SetUsername(char[] name)
+        public void SetUsername(string name, string lastName)
         {
             //.Trim()
-            username = name.ToString();   /// Переробити
+            //username = name.ToString();   /// Переробити
+
+            name.Trim();
+            lastName.Trim();
+            /*lastName.Remove(random.Next(3,5),lastName.Count);
+            lastName.CopyTo()*/
+            username = name + lastName;
         }
 
         public string GetPassword()

@@ -27,6 +27,7 @@ namespace DataGenerator
                         while ((input = sr.ReadLine()) != null && (input1 = _sr3.ReadLine()) != null)
                         {
                             char[] outFIO = new char[input.Length];
+                            string inputFIO = new string(outFIO);
 
                             //open VALUE
                             if (koma == 1)
@@ -41,7 +42,7 @@ namespace DataGenerator
 
                             using (StringReader sr2 = new StringReader(input))
                             {
-
+                                //late algorithm
                                 for (int i = 0; i < outFIO.Length; i++)
                                 {
                                     sr2.Read(outFIO, i, 1);
@@ -55,6 +56,7 @@ namespace DataGenerator
                                         Console.Write(outFIO[i]);
                                     }
                                 }
+
                             }
 
 
@@ -62,27 +64,12 @@ namespace DataGenerator
                             char[] outEmails = new char[input.Length / 2];
                             UserGenerate User = new UserGenerate();
 
-                            using (StringReader sr4 = new StringReader(input1))
-                            {
-                                for (int i = 0; i < outEmails.Length; i++)
-                                {
-                                    sr4.Read(outEmails, i, 1);
+                            string[] subs = input1.Split(' ');
+                            User.SetUsername(subs[0], subs[1]);
 
-                                    if (Char.IsSeparator(outEmails[i]))
-                                    {
-                                        User.SetUsername(outEmails);
+                            //output
+                            Console.Write($"', '{User.email}', '{User.login}', '{User.GetPassword()}','{User.GetDate()}'");
 
-                                        Console.Write("', '");
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        Console.Write(outEmails[i]);
-                                    }
-                                }
-
-                                Console.Write($"', '{User.email}', '{User.login}', '{User.GetPassword()}','{User.GetDate()}'");
-                            }
                             Console.Write(")");   //close VALUE
                             Console.WriteLine();
                         }
