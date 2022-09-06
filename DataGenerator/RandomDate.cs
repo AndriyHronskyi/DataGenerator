@@ -31,20 +31,32 @@ namespace DataGenerator
             }
         }
 
-        public void FormatDate()
-        {
-            if (Month < 10)
-            {
-                _month = "0"+Month.ToString();
-            }
-            else if (Day < 10)
-            {
-                _day = "0"+Day.ToString();
-            }
-        }
-
         public string GetRandomDate()
         {
+            if (Month < 10 || Day < 10)
+            {
+                if (Month < 10 && Day < 10)
+                {
+                    _month = "0" + Month.ToString();
+                    _day = "0" + Day.ToString();
+                }
+                else if(Month < 10)
+                {
+                    _month = "0" + Month.ToString();
+                    _day = Day.ToString();
+                }
+                else
+                {
+                    _month = Month.ToString();
+                    _day = "0" + Day.ToString();
+                }
+            }
+            else
+            {
+                _month = Month.ToString();
+                _day = Day.ToString();
+            }
+
             return Year.ToString() + _month + _day;
         }
     }

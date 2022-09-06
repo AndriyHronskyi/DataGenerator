@@ -56,7 +56,6 @@ namespace DataGenerator
                                         Console.Write(outFIO[i]);
                                     }
                                 }
-
                             }
 
 

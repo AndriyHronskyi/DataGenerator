@@ -31,7 +31,16 @@ namespace DataGenerator
             lastName.Trim();
             /*lastName.Remove(random.Next(3,5),lastName.Count);
             lastName.CopyTo()*/
-            username = name + lastName;
+            char[] a  = new char[random.Next(3, 5)];
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = lastName.ElementAt(i);
+            }
+            //lastName = a.ToString();
+            string str = new string(a);
+
+            username = name + str;
         }
 
         public string GetPassword()
