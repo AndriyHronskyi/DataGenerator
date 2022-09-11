@@ -22,12 +22,14 @@ namespace DataGenerator
                     {
                         string input = null;
                         string input1 = null;
+                        List<string> passwords = new List<string>();
                         var koma = 1;
 
                         while ((input = sr.ReadLine()) != null && (input1 = _sr3.ReadLine()) != null)
                         {
                             char[] outFIO = new char[input.Length];
                             string inputFIO = new string(outFIO);
+
 
                             //open VALUE
                             if (koma == 1)
@@ -38,6 +40,7 @@ namespace DataGenerator
                             else
                             {
                                 Console.Write(",('");
+                                koma++;
                             }
 
                             using (StringReader sr2 = new StringReader(input))
@@ -65,10 +68,22 @@ namespace DataGenerator
 
                             string[] subs = input1.Split(' ');
                             User.SetUsername(subs[0], subs[1]);
+                            
+                            do
+                            {
+                                User.SetPassword();
+                                passwords.Add(User.password);
+                                if (koma <= 2)
+                                    break;
+                            } while (User.password.Equals(passwords));
 
                             //output
-                            Console.Write($"', '{User.email}', '{User.login}', '{User.GetPassword()}','{User.GetDate()}'");
-
+                            Console.Write($"', '{User.email}', '{User.login}', '{User.password}','{User.GetDate()}'");
+                            //додати провірки значень
+                            /*
+                             Цикл в якому індекс (int i) => parameters[i] перевіряється відповідним методом
+                             
+                             */
                             Console.Write(")");   //close VALUE
                             Console.WriteLine();
                         }

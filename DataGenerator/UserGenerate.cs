@@ -15,7 +15,7 @@ namespace DataGenerator
 
         private string username;
         public string login { get { return username + random.Next(111, 999).ToString(); }}
-        public string email { get { return login + EmailDomains[random.Next(0, 5)]; ; } }
+        public string email { get { return login + EmailDomains[random.Next(0, 5)]; } }
 
         private string[] EmailDomains = {"@mail.ua",
                                          "@gmail.com",
@@ -23,6 +23,8 @@ namespace DataGenerator
                                          "@ukr.net",
                                          "@hotmail.com",
                                          "@list.ua"};
+
+        public string password = "";
 
         public UserGenerate() { }
 
@@ -43,10 +45,10 @@ namespace DataGenerator
             username = name + str;
         }
 
-        public string GetPassword()
+        public void SetPassword()
         {
             Thread.Sleep(30);
-            return random3.Next(10000, 999999).ToString();
+            password = random3.Next(10000, 999999).ToString();
         }
 
         public string GetDate()
