@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataFormat.cs" />
+    <Compile Include="ITypeData.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Password.cs" />
+    <Compile Include="TypeData.cs" />
     <Compile Include="UserGenerate.cs" />
     <Compile Include="RandomDate.cs" />
     <Compile Include="Program.cs" />
