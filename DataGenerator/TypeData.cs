@@ -18,7 +18,37 @@ namespace DataGenerator
         }
         */
 
-        protected string[] Types = new string[20];    //Store types of data
+        //Store types of data
+        public string[] Types = new string[] {"FirstName",
+                                                    "LastName",
+                                                    "Patronymic",
+                                                    "Email",
+                                                    "Login",
+                                                    "Password",
+                                                    "Date"};
+
+        public Dictionary<string, string> DictType = new Dictionary<string, string>()
+        {
+            {"FirstName", "read"},
+            {"LastName", "read"},
+            {"Patronymic", "read"},
+            {"Email", "create"},
+            {"Login", "create"},
+            {"Password", "generate"},
+            {"Date", "generate"}
+        };
+        public List<KeyValuePair<string, string>> Dataa { get; set; } = new List<KeyValuePair<string, string>>()
+        {
+            new KeyValuePair<string, string>("FirstName", "read"),
+            new KeyValuePair<string, string>("LastName", "read"),
+            new KeyValuePair<string, string>("Patronymic", "read"),
+            new KeyValuePair<string, string>("Email", "create"),
+            new KeyValuePair<string, string>("Login", "create"),
+            new KeyValuePair<string, string>("Password", "generate"),
+            new KeyValuePair<string, string>("Date", "generate")
+        };
+        //заповнити і провірити чи спрацює індексація елементів
+
 
         public TypeData() { }
 

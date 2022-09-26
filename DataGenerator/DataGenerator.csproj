@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataFormat.cs" />
+    <Compile Include="FilesDataMerge.cs" />
     <Compile Include="ITypeData.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Password.cs" />
