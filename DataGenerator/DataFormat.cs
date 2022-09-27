@@ -9,19 +9,16 @@ namespace DataGenerator
     public static class DataFormat
     {
         private static string[] strings;
-        public static string[] MSSQL_Format(string input1 = "", string input2 = "")
+
+        //    Має упаковувати все у вигляді string, що містить sql запит
+        //    Можливо зробити шоб отримував TypeData.Types , або List<string[]>, де string[] - готові строчки з данними
+        public static string[] MSSQL_Format(List<string> input)
         {
-            if (input1 != "" || input2 != "")
-            {
-                if (input1 != "" && input2 != "")
-                {
-                    strings = input1.Split(' ');
-                }
-            }
-            else
-            {
-                Console.WriteLine("DataFormat.MSSQL_Format() gets empty strings!!");
-            }
+            
+            //Console.WriteLine("DataFormat.MSSQL_Format() gets empty strings!!");
+            
+
+            //
             string[] result = new string[strings.Length];
             return result;
         }

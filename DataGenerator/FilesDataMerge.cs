@@ -36,7 +36,7 @@ namespace DataGenerator
         { 
             Paths = paths;
 
-            //Test construction
+            #region Test construction
             Console.WriteLine(Types[0]);
             Console.WriteLine(Types[0].Key);
             if (Types[0].Value == "read")
@@ -49,6 +49,7 @@ namespace DataGenerator
                 Console.WriteLine("value not 'read'");
             }
             //*----------------------------------------------
+            #endregion
 
         }
 
@@ -75,7 +76,8 @@ namespace DataGenerator
                     FileBase.Add(FileBuffer);
                 }
             }
-
         }
+
+
     }
 }
