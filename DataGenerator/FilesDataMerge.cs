@@ -14,16 +14,14 @@ namespace DataGenerator
         private string input = "";
         private int index = 1;
 
+        private List<KeyValuePair<string, string>> Types = new TypeData().Types;
+        public List<List<string[]>> FileBase = new List<List<string[]>>();                 // Contains Lists with data several files
+        #region May is usfull
+        /*
         private string[] types = new TypeData().Types;
         private Dictionary<string, string> data = new TypeData().DictType;
-
-        /*
-         * param[string[paramName,paramStatus]]
-         * string[ paremeter name, parameter status ]
-         * List - collection parameters, which have status for understanding how it wiil be processed
-         * 
-         * */
-        private List<string[,]> parameters = new List<string[,]>();
+        */
+        /*private List<string[,]> parameters = new List<string[,]>();
         public string[,] param = new string[,] {
             {"FirstName", "read"},
             {"LastName", "read"},
@@ -32,53 +30,52 @@ namespace DataGenerator
             {"Login", "create"},
             {"Password", "generate"},
             {"Date", "generate"}
-        };
-
+        };*/
+        #endregion
         public FilesDataMerge(string[] paths)
         { 
             Paths = paths;
 
-            parameters.Add(param);//!!!! перевірити чи передає параметри в список
+            //Test construction
+            Console.WriteLine(Types[0]);
+            Console.WriteLine(Types[0].Key);
+            if (Types[0].Value == "read")
+            {
+                Console.WriteLine(Types[0].Value);
+                Console.WriteLine("value 'read1'");
+            }
+            else
+            {
+                Console.WriteLine("value not 'read'");
+            }
+            //*----------------------------------------------
 
-        //parameters.Add(,);
         }
 
-        public string MergeFiles()
-        {
-            string resString = "";     //або массив із набором параметрів
+        //Files reader
+        //Merge files
 
+        //   Selecting data from several files and put it into FileBase(List<List<string[]>>)
+        //   Filebase(File(string[parameter]))
+        public void FilesSelect()
+        {
             foreach (string path in Paths)
             {
                 using (StreamReader sr = new StreamReader(path, System.Text.Encoding.UTF8))
                 {
-                    if (index == 1)
-                    {
-                        index++;
-                    }
-                    else
-                    {
-                        resString += ",('";
-                        index++;
-                    }
+                    List<string[]> FileBuffer = new List<string[]>();  //Contains fields of one file
+
                     while ((input = sr.ReadLine()) != null)
                     {
-                        string[] subs = input.Split(' ');
-                        for (int i = 0; i < subs.Length; i++)
-                        {
-                            //data.TryGetValue(data[i],)
-                        }
+                        //divide fields
+                        string[] subs = input.Split(' ');         //subs contsins parameters of one string  
+                        
+                        FileBuffer.Add(subs);
                     }
+                    FileBase.Add(FileBuffer);
                 }
             }
-            /*
-             *Зробити шоб перебирало параметри і якшо "read" - то зчитуєм з файлу
-             *Інакше просто ставим затичку, або генеруєм значення
-             *
-             *
-             */
 
-            
-            return resString;
         }
     }
 }

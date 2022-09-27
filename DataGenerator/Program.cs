@@ -14,7 +14,9 @@ namespace DataGenerator
         {
             string Path1 = "E:\\Education\\DataRead\\fio.txt";
             string Path2 = "E:\\Education\\DataRead\\emails.txt";
-            
+
+            string[] Paths = new string[10];  //unitary container for multiple file paths
+
             string Result = "('";
             //List<TypeData> Result = new List<TypeData>();
             //Data:
@@ -25,7 +27,8 @@ namespace DataGenerator
             //      -Login
             //      -Password
             //      -Date.Data
-
+            #region Basic realisation
+            // /*
             try
             {
                 using (StreamReader sr = new StreamReader(Path1, System.Text.Encoding.UTF8))
@@ -77,10 +80,10 @@ namespace DataGenerator
                             
                             Result += ", '" + User.email + "', '" + User.login + "', '" + User.password + "','" + User.GetDate() + "'";
                             //додати провірки значень
-                            /*
-                             Цикл в якому індекс (int i) => parameters[i] перевіряється відповідним методом
+                            
+                             //Цикл в якому індекс (int i) => parameters[i] перевіряється відповідним методом
                              
-                             */
+                             
                               
                             Result += ")" + "\n"; //close VALUE + start new string
                         }
@@ -117,7 +120,25 @@ namespace DataGenerator
                 fstream.Write(buffer, 0, buffer.Length);
                 Console.WriteLine($"Text writed in file: {filename}");
             }
+            //*/
+            #endregion
+
+            #region Test area
+
+            Paths[0] = Path1;
+            Paths[1] = Path2;
+
+            //Зробити автоматичну передачу параметрів
+            //TypeData Td = new TypeData();
+            //Td.Types.Add(new KeyValuePair<string, string>("FirstName1", "read"));
+
+            FilesDataMerge files = new FilesDataMerge(Paths);
             
+            
+
+
+            #endregion
+
             Console.ReadLine();
         }
     }

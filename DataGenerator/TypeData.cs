@@ -18,26 +18,13 @@ namespace DataGenerator
         }
         */
 
-        //Store types of data
-        public string[] Types = new string[] {"FirstName",
-                                                    "LastName",
-                                                    "Patronymic",
-                                                    "Email",
-                                                    "Login",
-                                                    "Password",
-                                                    "Date"};
-
-        public Dictionary<string, string> DictType = new Dictionary<string, string>()
-        {
-            {"FirstName", "read"},
-            {"LastName", "read"},
-            {"Patronymic", "read"},
-            {"Email", "create"},
-            {"Login", "create"},
-            {"Password", "generate"},
-            {"Date", "generate"}
-        };
-        public List<KeyValuePair<string, string>> Dataa { get; set; } = new List<KeyValuePair<string, string>>()
+        /*
+         * param[string[paramName,paramStatus]]
+         * string[ paremeter name, parameter status ]
+         * List - collection parameters, which have status for understanding how it wiil be processed
+         * 
+         * */
+        public List<KeyValuePair<string, string>> Types { get; set; } = new List<KeyValuePair<string, string>>()
         {
             new KeyValuePair<string, string>("FirstName", "read"),
             new KeyValuePair<string, string>("LastName", "read"),
