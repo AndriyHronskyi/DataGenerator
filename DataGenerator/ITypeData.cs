@@ -8,9 +8,10 @@ namespace DataGenerator
 {
     public interface ITypeData
     {
-        /* public Generate() { };*/
         void Generate();
-        
+        void MakeUnick();
+
+
 
     }
 }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataGenerator
 {
-    public class TypeData
+    public class TypeData : ITypeData
     {
-        public List<string> Data { get; set; } = new List<string>();
+        public static List<string> Data { get; set; } = new List<string>();
 
         /*  Це для UserGenerate
         public TypeData(IEnumerable<string> data)
@@ -24,8 +24,8 @@ namespace DataGenerator
          * List - collection parameters, which have status for understanding how it wiil be processed
          * 
          * */
-        public List<KeyValuePair<string, string>> Types { get; set; } = new List<KeyValuePair<string, string>>()
-        {
+        public static List<KeyValuePair<string, string>> Types { get; set; } = new List<KeyValuePair<string, string>>()
+        /*{
             new KeyValuePair<string, string>("FirstName", "read"),
             new KeyValuePair<string, string>("LastName", "read"),
             new KeyValuePair<string, string>("Patronymic", "read"),
@@ -33,11 +33,10 @@ namespace DataGenerator
             new KeyValuePair<string, string>("Login", "create"),
             new KeyValuePair<string, string>("Password", "generate"),
             new KeyValuePair<string, string>("Date", "generate")
-        };
-        //заповнити і провірити чи спрацює індексація елементів
+        }*/;
 
 
-        public TypeData() { }
+        //public TypeData() {  }
 
         //універсальна реалзація
         public virtual void MakeUnick()
@@ -52,20 +51,8 @@ namespace DataGenerator
                 }
             }
         }
-        public virtual void Generate()
-        {
-            /*Thread.Sleep(10);
-            var prePass = random.Next(10000, 999999).ToString();
 
-            if (prePass.Equals(passwords))
-            {
-                Thread.Sleep(30);
-                Generate();
-            }
-            else
-            {
-                passwords.Add(prePass);
-            }*/
-        }
+        public virtual void Generate() { }
+        
     }
 }

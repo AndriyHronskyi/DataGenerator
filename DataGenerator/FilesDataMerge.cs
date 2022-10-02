@@ -14,27 +14,18 @@ namespace DataGenerator
         private string input = "";
         private int index = 1;
 
-        private List<KeyValuePair<string, string>> Types = new TypeData().Types;
+        //hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+        private List<KeyValuePair<string, string>> Types1 = Types;
+
+
         public List<List<string[]>> FileBase = new List<List<string[]>>();                 // Contains Lists with data several files
-        #region May is usfull
-        /*
-        private string[] types = new TypeData().Types;
-        private Dictionary<string, string> data = new TypeData().DictType;
-        */
-        /*private List<string[,]> parameters = new List<string[,]>();
-        public string[,] param = new string[,] {
-            {"FirstName", "read"},
-            {"LastName", "read"},
-            {"Patronymic", "read"},
-            {"Email", "create"},
-            {"Login", "create"},
-            {"Password", "generate"},
-            {"Date", "generate"}
-        };*/
-        #endregion
-        public FilesDataMerge(string[] paths)
+        private List<KeyValuePair<string, int>> TypesIn = new List<KeyValuePair<string, int>>();        //List with info in which order we got data from files
+
+        public FilesDataMerge(string[] paths, List<KeyValuePair<string, int>> TypesInput)
         { 
             Paths = paths;
+            TypesIn = TypesInput;
+
 
             #region Test construction
             Console.WriteLine(Types[0]);
@@ -52,7 +43,7 @@ namespace DataGenerator
             #endregion
 
         }
-
+        
         //Files reader
         //Merge files
 
@@ -78,6 +69,15 @@ namespace DataGenerator
             }
         }
 
-
+        /*
+         *  DataFilling()
+         *
+         *  Using TypeData().Types
+         *  Using clases like Login, RandomDate, Password for generating parameters 
+         * with  List<KeyValuePair<string, string>>, where "key" : login, passwod, date  
+         * and value: generate, create etc!
+         *
+         ***/
+        public void Parameters() { }
     }
 }
