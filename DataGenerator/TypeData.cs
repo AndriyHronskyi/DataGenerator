@@ -36,7 +36,7 @@ namespace DataGenerator
         }*/;
 
 
-        //public TypeData() {  }
+        public TypeData() {  }
 
         //універсальна реалзація
         public virtual void MakeUnick()

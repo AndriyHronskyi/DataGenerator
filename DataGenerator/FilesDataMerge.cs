@@ -78,6 +78,9 @@ namespace DataGenerator
          * and value: generate, create etc!
          *
          ***/
-        public void Parameters() { }
+        public void Parameters() 
+        { 
+            
+        }
     }
 }

@@ -151,8 +151,84 @@ namespace DataGenerator
             TypeData.Types = TypesOutput;
 
 
+
+
             #endregion
 
+            #region User Console
+            
+            Console.WriteLine("Hello! This is a program for generating multiple strings querry.");
+            Console.WriteLine("*");
+            Console.WriteLine("*");
+            Console.WriteLine("1. Write full paths of files and parameters which they contain \n (It can be a names of fields in database)");
+            Console.WriteLine("*");
+
+            int index = 0;
+            do
+            {
+                bool exitCondition = false;
+                if (index > 0)
+                { 
+                    Console.WriteLine("Go next stage?  1 - Next; Enter - add another file");
+                    
+                    try
+                    {
+                        string buf0 = Convert.ToString(Console.ReadLine());
+                        if (buf0.Contains("1"))
+                        {
+                            exitCondition = true;
+                            break;
+                        }
+                    }
+                    catch (Exception e1)
+                    {
+                        Console.WriteLine("Incorrect answer. Try again!");
+                        
+                        throw;
+                    }
+                }
+                index++;
+
+                Console.WriteLine($"1.{index } File path:");
+                string buf = Convert.ToString(Console.ReadLine());
+                //checking to Copy
+                if (index > 1)
+                {
+                    while (Paths.Contains(buf))
+                    {
+                        Console.WriteLine("\n You have already aded path for this file!!!!");
+                        Console.WriteLine("Add another file path, or press Enter - to next stage");
+                        Console.WriteLine($"1.{index} File path:");
+                        buf = Convert.ToString(Console.ReadLine());
+                        if (buf.Equals(""))
+                        {
+                            exitCondition = true;
+                            break;
+                        }
+                    }
+                }
+
+
+                if (exitCondition)
+                    break;
+               
+                Paths[index - 1] = buf;   //add file path
+
+                Console.WriteLine("");
+            } while (index < 11);
+
+            Console.WriteLine("-");
+            Console.WriteLine("-");
+            Console.WriteLine("-");
+            Console.WriteLine("Test input!!!");
+            Console.WriteLine("-");
+            foreach (var item in Paths)
+            {
+                Console.WriteLine(item);
+            }
+            #endregion
+
+            /*
             #region Test area
 
 
@@ -170,7 +246,7 @@ namespace DataGenerator
 
 
             #endregion
-
+            */
             Console.ReadLine();
         }
     }
